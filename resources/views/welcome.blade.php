@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" >
     <title>Cars</title>
+    <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}"/>
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Nuevo<span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/create">Nuevo<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+    </nav>
 
     <h1>Lista de vehículos</h1>
 
@@ -45,6 +46,8 @@
              <td>{{ $auto->color }}</td>
              <td>{{ $auto->registration }}</td>
              <td>{{ $auto->doors }}</td>
+             <td><a href="{{ route('edit', $auto->id) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
+             <td><a href="{{ route('delete', $auto->id) }}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
         </tr>
         @endforeach
       </tbody>
@@ -52,7 +55,7 @@
 
     @else
     <h2>Aún no existen autos para mostrar</h2>
-    <a href="">Agregar auto</a>
+    <a href="/create">Agregar auto</a>
 
     @endif
 

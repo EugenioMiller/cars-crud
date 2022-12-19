@@ -14,7 +14,9 @@ use App\Http\Controllers\CarsController;
 |
 */
 
-Route::get('/', [CarsController::class, 'index']);
-Route::get('/create', function() {
-    return view('formAdd');
-});
+Route::get('/', [CarsController::class, 'index'])->name('home');
+Route::get('/create', [CarsController::class, 'add']);
+Route::post('/newCar', [CarsController::class, 'new']);
+Route::get('/editCar/{car_id}', [CarsController::class, 'edit'])->name('edit');
+Route::post('/updateCar', [CarsController::class, 'update']);
+Route::get('/delete/{car_id}', [CarsController::class, 'delete'])->name('delete');
